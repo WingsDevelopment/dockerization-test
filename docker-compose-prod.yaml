@@ -1,0 +1,23 @@
+version: "3.3"
+
+services:
+  api:
+    image: test-api-prod
+    restart: unless-stopped
+    container_name: api_container
+    ports:
+      - "3000:3000"
+    networks:
+      - test-network
+  web-client:
+    image: wingsdevelopment/test-web-client
+    restart: unless-stopped
+    container_name: web_client_container
+    ports:
+      - "80:80"
+      - "433:433"
+    networks:
+      - test-network
+networks:
+  test-network:
+    driver: bridge

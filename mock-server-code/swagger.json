@@ -1,0 +1,544 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Mock API",
+    "description": "Mock API",
+    "license": {
+      "name": "MIT",
+      "url": "https://opensource.org/licenses/MIT"
+    }
+  },
+  "host": "localhost:3000",
+  "basePath": "/",
+  "paths": {
+    "/createTag": {
+      "post": {
+        "tags": ["Tags"],
+        "summary": "Create a new tag",
+        "description": "",
+        "operationId": "createTag",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Tag object that needs to be added to the store",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/CreateTag"
+            }
+          }
+        ],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+    "/tags": {
+      "get": {
+        "tags": ["Tags"],
+        "summary": "Get all tags",
+        "description": "",
+        "operationId": "getTags",
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Tag"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/updateTag": {
+      "put": {
+        "tags": ["Tags"],
+        "summary": "Update an existing tag",
+        "description": "",
+        "operationId": "updateTag",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Tag object that needs to be updated in the store",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Tag"
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "404": {
+            "description": "Tag not found"
+          },
+          " 405": {
+            "description": "Validation exception"
+          }
+        }
+      }
+    },
+    "/deleteTag/{id}": {
+      "delete": {
+        "tags": ["Tags"],
+        "summary": "Delete a tag",
+        "description": "",
+        "operationId": "deleteTag",
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Tag id to delete",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "404": {
+            "description": "Tag not found"
+          }
+        }
+      }
+    },
+    "/createPost": {
+      "post": {
+        "tags": ["Posts"],
+        "summary": "Create a new post",
+        "description": "",
+        "operationId": "createPost",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Post object that needs to be added to the store",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/CreatePost"
+            }
+          }
+        ],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+    "/posts": {
+      "get": {
+        "tags": ["Posts"],
+        "summary": "Get all posts",
+        "description": "",
+        "operationId": "getPosts",
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Post"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/updatePost": {
+      "put": {
+        "tags": ["Posts"],
+        "summary": "Update an existing post",
+        "description": "",
+        "operationId": "updatePost",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Post object that needs to be updated in the store",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/UpdatePost"
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "404": {
+            "description": "Post not found"
+          },
+          " 405": {
+            "description": "Validation exception"
+          }
+        }
+      }
+    },
+    "/deletePost/{id}": {
+      "delete": {
+        "tags": ["Posts"],
+        "summary": "Delete a post",
+        "description": "",
+        "operationId": "deletePost",
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Post id to delete",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "404": {
+            "description": "Post not found"
+          }
+        }
+      }
+    },
+    "/createCategory": {
+      "post": {
+        "tags": ["Categories"],
+        "summary": "Create a new category",
+        "description": "",
+        "operationId": "createCategory",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Category object that needs to be added to the store",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/CreateCategory"
+            }
+          }
+        ],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+    "/categories": {
+      "get": {
+        "tags": ["Categories"],
+        "summary": "Get all categories",
+        "description": "",
+        "operationId": "getCategories",
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Category"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/updateCategory": {
+      "put": {
+        "tags": ["Categories"],
+        "summary": "Update an existing category",
+        "description": "",
+        "operationId": "updateCategory",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Category object that needs to be updated in the store",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Category"
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "404": {
+            "description": "Category not found"
+          },
+          " 405": {
+            "description": "Validation exception"
+          }
+        }
+      }
+    },
+    "/deleteCategory/{id}": {
+      "delete": {
+        "tags": ["Categories"],
+        "summary": "Delete a category",
+        "description": "",
+        "operationId": "deleteCategory",
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Category id to delete",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "404": {
+            "description": "Category not found"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Category": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "nullable": false
+        },
+        "title": {
+          "type": "string",
+          "nullable": false
+        },
+        "description": {
+          "type": "string",
+          "nullable": true
+        },
+        "createdAt": {
+          "type": "string",
+          "nullable": true
+        },
+        "updatedAt": {
+          "type": "string",
+          "nullable": true
+        },
+        "order": {
+          "type": "integer",
+          "nullable": true
+        }
+      }
+    },
+    "CreateCategory": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string",
+          "nullable": false
+        },
+        "description": {
+          "type": "string",
+          "nullable": true
+        },
+        "order": {
+          "type": "integer",
+          "nullable": true
+        }
+      }
+    },
+    "Tag": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "nullable": false
+        },
+        "title": {
+          "type": "string",
+          "nullable": false
+        },
+        "description": {
+          "type": "string",
+          "nullable": true
+        },
+        "urlSlug": {
+          "type": "string",
+          "nullable": true
+        },
+        "createdAt": {
+          "type": "string",
+          "nullable": true
+        },
+        "updatedAt": {
+          "type": "string",
+          "nullable": true
+        },
+        "order": {
+          "type": "integer",
+          "nullable": true
+        }
+      }
+    },
+    "CreateTag": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string",
+          "nullable": false
+        },
+        "description": {
+          "type": "string",
+          "nullable": true
+        },
+        "urlSlug": {
+          "type": "string",
+          "nullable": true
+        },
+        "createdAt": {
+          "type": "string",
+          "nullable": true
+        },
+        "updatedAt": {
+          "type": "string",
+          "nullable": true
+        },
+        "order": {
+          "type": "integer",
+          "nullable": true
+        }
+      }
+    },
+    "Post": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "nullable": false
+        },
+        "title": {
+          "type": "string",
+          "nullable": false
+        },
+        "description": {
+          "type": "string",
+          "nullable": true
+        },
+        "createdAt": {
+          "type": "string",
+          "nullable": true
+        },
+        "updatedAt": {
+          "type": "string",
+          "nullable": true
+        },
+        "order": {
+          "type": "integer",
+          "nullable": true
+        },
+        "tags": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Tag"
+          }
+        },
+        "category": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Category"
+          }
+        }
+      }
+    },
+    "CreatePost": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string",
+          "nullable": false
+        },
+        "description": {
+          "type": "string",
+          "nullable": true
+        },
+        "order": {
+          "type": "integer",
+          "nullable": true
+        },
+        "tagIds": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "categoryIds": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "UpdatePost": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "nullable": false
+        },
+        "title": {
+          "type": "string",
+          "nullable": false
+        },
+        "description": {
+          "type": "string",
+          "nullable": true
+        },
+        "order": {
+          "type": "integer",
+          "nullable": true
+        },
+        "tagIds": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "categoryIds": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  },
+  "schemes": ["http"],
+  "consumes": ["application/json"],
+  "produces": ["application/json"]
+}

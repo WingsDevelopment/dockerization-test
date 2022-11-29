@@ -1,0 +1,22 @@
+version: "3.8"
+services:
+  api:
+    build: ./mock-server-code
+    container_name: api_container
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./mock-server-code:/app
+      - /app/node_modules
+  web-client:
+    build: ./client-code
+    container_name: web_client_container
+    ports:
+      - "5100:5173"
+    stdin_open: true
+    tty: true
+    environment:
+      - "VITE_APP_BASE_URL=http://localhost:3000"
+    # volumes:
+    #   - ./client-code:/app
+    #   - /app/node_modules
