@@ -6,11 +6,11 @@ RUN npm install -g nodemon
 # set working directory
 WORKDIR /app
 
-COPY package*.json .
+COPY package*.json ./
 
 RUN npm install
 
-COPY . .
+COPY . ./
 
 # expose port 3000
 EXPOSE 3000
